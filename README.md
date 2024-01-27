@@ -2,6 +2,26 @@
 
 # BlackHole: Audio Loopback Driver
 
+## Notes on Custom Build
+
+- To build 1 channel only:
+
+```sh
+driverName="blackhole-1ch"
+bundleID="audio.existential.BlackHole"
+icon="BlackHole.icns"
+
+xcodebuild \
+  -project BlackHole.xcodeproj \
+  -configuration Release \
+  PRODUCT_BUNDLE_IDENTIFIER=$bundleID \
+  GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS
+  kDriver_Name=\"'$driverName'\"
+  kPlugIn_BundleID=\"'$bundleID'\"
+  kPlugIn_Icon=\"'$icon'\"
+  kNumber_Of_Channels=1'
+```
+
 ![Platform: macOS](https://img.shields.io/badge/platform-macOS-lightgrey)
 [![Release](https://img.shields.io/github/v/release/ExistentialAudio/BlackHole)](https://github.com/ExistentialAudio/BlackHole/releases)
 [![License](https://img.shields.io/github/license/ExistentialAudio/BlackHole)](LICENSE)
